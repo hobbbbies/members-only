@@ -4,6 +4,8 @@ const alphaErr = "must only contain letters.";
 const lengthErr = "must be between 1 and 20 characters.";
 const emailErr = "Username must be a valid email"
 const queries = require("../db/queries");
+const helpers = require("../lib/helpers");
+
 
 
 const validateUser = [
@@ -14,18 +16,33 @@ const validateUser = [
     .isAlpha().withMessage(`Last name ${alphaErr}`)
     .isLength({ min: 1, max: 20 }).withMessage(`Last name ${lengthErr}`),
   body("email").trim()
-    .isEmail.withMessage(emailErr),
+    .isEmail().withMessage(emailErr),
   body("password").trim()
-    .notEmpty.withMessage("Password is required")
+    .notEmpty().withMessage("Password is required")
 ];
 
-exports.usersCreatePost = [
+const emailCustom = body('email').custom(async (value) => {
+    const users = await queries.findUserByEmail(value)
+    if (users.length) {
+        throw new Error("Email already in use");
+    }
+    return true;
+});
+
+const passwordCustom = body('verifyPassword').custom((value, { req }) => {
+    if (value !== req.body.password) {
+        throw new Error("Passwords do not match");
+    }
+    return true;
+});
+
+const usersCreatePost = [
   validateUser,
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).render("createUser", {
-        title: "Create user",
+      return res.status(400).render("registerView", {
+        title: "Register",
         errors: errors.array(),
       });
     }
@@ -34,3 +51,5 @@ exports.usersCreatePost = [
     res.redirect("/");
   }
 ];
+
+module.exports = { usersCreatePost, emailCustom, passwordCustom }

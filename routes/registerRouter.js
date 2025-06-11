@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const helpers = require("../lib/helpers");
 const controller = require("../controllers/registerController");
 
  router.get('/', (req, res) => {
-    res.render('registerView', {title: Register});
+    res.render('registerView', {title: 'Register'});
  });
 
 //  router.post('/', async (req, res, next) => {
@@ -20,5 +19,5 @@ const controller = require("../controllers/registerController");
 //     res.redirect('/');
 //  });
 
-  router.post("/", controller.usersCreatePost);
+  router.post("/", controller.emailCustom, controller.passwordCustom, controller.usersCreatePost);
 module.exports = router;

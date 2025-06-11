@@ -8,4 +8,9 @@ async function createUser(fname, lname, email, hash, status) {
         `, [fname, lname, email, hash, status]);
 }
 
-module.exports = { createUser };
+ async function findUserByEmail(email) {
+    const { rows } = await pool.query('SELECT * FROM members WHERE email = $1', [email]);
+    return rows;
+ }
+
+module.exports = { createUser, findUserByEmail };
