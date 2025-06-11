@@ -23,4 +23,5 @@ router.get('/failure', (req, res, next) => {
     res.render('loginFailView');
 });
 
+
 module.exports = router;

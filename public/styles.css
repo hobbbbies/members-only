@@ -95,6 +95,23 @@ main {
     box-shadow: 0 4px 14px rgba(44,62,80,0.16);
     transform: translateY(-2px) scale(1.04);
     outline: none;
+ }
+
+ header {
+    position: relative;
+ }
+
+.logBtn > .buttons {
+    display: inline-block;
+    background: #ffffff; 
+    color: black;
+    border: 1px solid #2986cc; /* Added border for definition */
 }
 
-
+ .logBtn {
+    display: flex;
+    gap: 16px;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+ }

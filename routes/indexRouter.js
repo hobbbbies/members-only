@@ -1,18 +1,17 @@
 const express = require("express");
 const router = express.Router();
+const queries = require('../db/queries');
 
-router.get("/", (req, res) => {
-    res.render('indexView');
+router.get("/", async (req, res) => {
+    messages = await queries.getMessages();
+    res.render('indexView', { messages: messages, user: req.user });
 });
 
-// router.get('/protected-route', (req, res, next) => {
-    
-//     // This is how you check if a user is authenticated and protect a route.  You could turn this into a custom middleware to make it less redundant
-//     if (req.isAuthenticated()) {
-//         res.send('<h1>You are authenticated</h1><p><a href="/logout">Logout and reload</a></p>');
-//     } else {
-//         res.send('<h1>You are not authenticated</h1><p><a href="/login">Login</a></p>');
-//     }
-// });
+router.get('/logout', (req, res, next) => {
+    req.logout((err) => {
+        if (err) return next(err)
+        res.redirect('/');
+    });
+});
 
 module.exports = router;

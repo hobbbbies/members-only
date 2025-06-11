@@ -7,14 +7,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Members Only Message Board</h1>
-    </header>
+    <%- include("./header", {user: user}) %>
     <main>
         <a class="buttons" href="/create">Post a message</a>
         <section class="message-board">
             <h2>Message Board</h2>
             <div class="messages">
+                <% messages.map((msg) => { %>
+                    <div class="message">
+                        <div><strong>Name:</strong> <%= msg.fname %>  <%= msg.lname %></div>
+                        <div><strong>Email:</strong> <%= msg.email %></div>
+                        <div><strong>Status:</strong> <%= msg.status %></div>
+                        <div><strong><%= msg.date %></strong></div>
+                        <p><%= msg.message %></p>
+                    </div>
+                <% }) %>
                 <div class="message">
                     <div><strong>First Name:</strong> Alice</div>
                     <div><strong>Last Name:</strong> Johnson</div>

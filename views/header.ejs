@@ -1,0 +1,13 @@
+<header>
+    <h1>Members Only Message Board</h1>
+    <% if(locals.user) { %>
+        <div class="logBtn">
+            <p>Welcome, <%= user.fname %> <%= user.lname %></p>
+            <a class="buttons" href="/logout">Logout</a>
+        </div>
+    <% } else { %>
+        <div class="logBtn">
+            <a class="buttons" href="/login">Login</a>
+        </div>
+    <% } %>
+</header>
