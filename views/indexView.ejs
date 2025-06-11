@@ -4,44 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="../public/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="main-form"> 
-        <form method="POST" action="/register"> 
-            <div class="form-group">
-                <label for="fname">First Name:</label>
-                <input type="text" id="fname" name="fname" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="lname">Last Name:</label>
-                <input type="text" id="lname" name="lname" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Membership Status:</label>
-                <div class="radio-group">
-                    <input type="radio" id="member" name="membershipStatus" value="member">
-                    <label for="member">Member</label>
-                    
-                    <input type="radio" id="guest" name="membershipStatus" value="guest" checked>
-                    <label for="guest">Guest</label>
+    <header>
+        <h1>Members Only Message Board</h1>
+    </header>
+    <main>
+        <a class="buttons" href="/create">Post a message</a>
+        <section class="message-board">
+            <h2>Message Board</h2>
+            <div class="messages">
+                <div class="message">
+                    <div><strong>First Name:</strong> Alice</div>
+                    <div><strong>Last Name:</strong> Johnson</div>
+                    <div><strong>Email:</strong> alice.johnson@email.com</div>
+                    <div><strong>Status:</strong> Member</div>
+                    <p>Hello everyone! Excited to be a part of Members Only.</p>
+                </div>
+                <div class="message">
+                    <div><strong>First Name:</strong> Bob</div>
+                    <div><strong>Last Name:</strong> Lee</div>
+                    <div><strong>Email:</strong> boblee123</div>
+                    <div><strong>Status:</strong> Guest</div>
+                    <p>Glad to find this board. Looking forward to connecting!</p>
+                </div>
+                <div class="message">
+                    <div><strong>First Name:</strong> Priya</div>
+                    <div><strong>Last Name:</strong> Patel</div>
+                    <div><strong>Email:</strong> priya.patel@email.com</div>
+                    <div><strong>Status:</strong> Member</div>
+                    <p>Welcome new members! Don’t hesitate to introduce yourself.</p>
                 </div>
             </div>
-
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+        </section>
+    </main>
 </body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create page</title>
+    <link rel="stylesheet" href="../public/styles.css" />
+  </head>
+  <body>
+    <div class="main-form">
+      <% if (locals.errors) {%>
+      <ul>
+        <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+        <% }); %>
+      </ul>
+      <% } %>
+      <form method="POST" action="/create">
+        <div class="form-group">
+          <label for="msg">Message:</label>
+          <textarea type="text" id="msg" name="msg" required></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

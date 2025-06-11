@@ -3,10 +3,13 @@ const express = require("express");
 const app = express();
 const indexRouter = require("./routes/indexRouter");
 const registerRouter = require("./routes/registerRouter");
+const loginRouter = require("./routes/loginRouter");
+const createRouter = require("./routes/createRouter");
 const session = require('express-session');
 const passport = require('passport');
 const pool = require('./db/pool');
 const path = require('node:path');
+const { log } = require("node:console");
 const PORT = process.env.PORT || 3000;
 
 require('./config/passport');
@@ -29,6 +32,8 @@ app.use(session({
 app.use(passport.session());
 app.use("/", indexRouter);
 app.use("/register", registerRouter);
+app.use("/login", loginRouter);
+app.use("/create", createRouter);
 
 app.listen(PORT, () => {
     console.log("Listening on ", PORT);

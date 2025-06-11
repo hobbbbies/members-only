@@ -23,7 +23,7 @@ const validateUser = [
 
 const emailCustom = body('email').custom(async (value) => {
     const users = await queries.findUserByEmail(value)
-    if (users.length) {
+    if (users) {
         throw new Error("Email already in use");
     }
     return true;
