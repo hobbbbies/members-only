@@ -2,13 +2,19 @@
 const express = require("express");
 const app = express();
 const indexRouter = require("./routes/indexRouter");
+const registerRouter = require("./routes/registerRouter");
 const session = require('express-session');
-var passport = require('passport');
-const PORT = process.env || 3000;
+const passport = require('passport');
+const pool = require('./db/pool');
+const path = require('node:path');
+const PORT = process.env.PORT || 3000;
 
 require('./config/passport');
 require('dotenv').config();
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
@@ -21,8 +27,9 @@ app.use(session({
     cookie: {maxAge: 30 * 24 * 60 * 60 * 1000 },
 }));
 app.use(passport.session());
-app.use("/", indexRouter);  
+app.use("/", indexRouter);
+app.use("/register", registerRouter);
 
-app.listen(3000, () => {
-    console.log("Listening on 3000");
+app.listen(PORT, () => {
+    console.log("Listening on ", PORT);
 })

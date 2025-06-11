@@ -1,7 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const connection = require('./database');
-const queries = require('./queries');
+const queries = require('../db/queries');
 
 const verifyCallback = async (username, password, done) => {
     try {
