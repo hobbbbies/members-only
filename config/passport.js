@@ -6,9 +6,10 @@ const helpers = require("../lib/helpers");
 const verifyCallback = async (username, password, done) => {
     try {
         const user = await queries.findUserByEmail(username);
+        console.log(user);
         if (!user) return done(null, false);
 
-        const isValid = helpers.validPassword(password, user.password);
+        const isValid = await helpers.validPassword(password, user.password);
         if (isValid) {
             return done(null, user);
         } else {
@@ -19,7 +20,10 @@ const verifyCallback = async (username, password, done) => {
     }
 } 
 
-const strategy = new LocalStrategy(verifyCallback);
+const strategy = new LocalStrategy({
+    usernameField: 'email',    // Change if your form uses name="email" instead of name="username"
+    passwordField: 'password'  // Make sure this matches your form's password field name
+}, verifyCallback);
 
 passport.use(strategy);
 
