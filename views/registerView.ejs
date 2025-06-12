@@ -4,67 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="stylesheet" href="../public/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="main-form">
-      <% if (locals.errors) {%>
-      <ul>
-        <% errors.forEach(function(error) { %>
-        <li><%= error.msg %></li>
-        <% }); %>
-      </ul>
-      <% } %>
-      <form method="POST" action="/register">
-        <div class="form-group">
-          <label for="fname">First Name:</label>
-          <input type="text" id="fname" name="fname" required />
+    <%- include("./header", {user: user}) %>
+    <main>
+        <h1>Sign Up</h1>
+        <div class="main-form">
+          <% if (locals.errors) {%>
+          <ul>
+            <% errors.forEach(function(error) { %>
+            <li><%= error.msg %></li>
+            <% }); %>
+          </ul>
+          <% } %>
+          <form method="POST" action="/register">
+            <div class="form-group">
+              <label for="fname">First Name:</label>
+              <input type="text" id="fname" name="fname" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name:</label>
+              <input type="text" id="lname" name="lname" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <div class="form-group">
+              <label for="verifyPassword">Confirm Password:</label>
+              <input type="password" id="verifyPassword" name="verifyPassword" required />
+            </div>
+            <div class="form-group">
+              <label>Membership Status:</label>
+              <div class="radio-group">
+                <input
+                  type="radio"
+                  id="member"
+                  name="membershipStatus"
+                  value="member"
+                />
+                <label for="member">Member</label>
+                <input
+                  type="radio"
+                  id="guest"
+                  name="membershipStatus"
+                  value="guest"
+                  checked
+                />
+                <label for="guest">Guest</label>
+              </div>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
         </div>
-
-        <div class="form-group">
-          <label for="lname">Last Name:</label>
-          <input type="text" id="lname" name="lname" required />
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-
-        <div class="form-group">
-          <label for="verifyPassword">Confirm Password:</label>
-          <input type="password" id="verifyPassword" name="verifyPassword" required />
-        </div>
-
-        <div class="form-group">
-          <label>Membership Status:</label>
-          <div class="radio-group">
-            <input
-              type="radio"
-              id="member"
-              name="membershipStatus"
-              value="member"
-            />
-            <label for="member">Member</label>
-
-            <input
-              type="radio"
-              id="guest"
-              name="membershipStatus"
-              value="guest"
-              checked
-            />
-            <label for="guest">Guest</label>
-          </div>
-        </div>
-
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    </main>
   </body>
 </html>

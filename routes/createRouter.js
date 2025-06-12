@@ -4,7 +4,7 @@ const helpers = require("../lib/helpers");
 const queries = require("../db/queries");
 
 router.get("/", helpers.isAuthenticated, (req, res) => {
-    res.render("createView");
+    res.render("createView", { user: req.user });
 });
 
 router.post("/", async (req, res) => {

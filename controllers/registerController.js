@@ -38,7 +38,7 @@ const passwordCustom = body('verifyPassword').custom((value, { req }) => {
 
 const usersCreatePost = [
   validateUser,
-  async (req, res) => {
+  async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).render("registerView", {
@@ -48,7 +48,12 @@ const usersCreatePost = [
     }
     const hash = await helpers.genPassword(req.body.password);
     await queries.createUser(req.body.fname, req.body.lname, req.body.email, hash, req.body.membershipStatus);
-    res.redirect("/");
+    const user = await queries.findUserByEmail(req.body.email);
+
+    req.login(user, function(err) {
+        if (err) { return next(err); }
+        return res.redirect('/');
+    });
   }
 ];
 

@@ -3,7 +3,7 @@ const router = express.Router();
 const controller = require("../controllers/registerController");
 
  router.get('/', (req, res) => {
-    res.render('registerView', {title: 'Register'});
+    res.render('registerView', { title: 'Register', user: req.user });
  });
 
 //  router.post('/', async (req, res, next) => {

@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #f5f6fa;
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -12,6 +16,11 @@ header {
     padding: 2rem 0 1rem 0;
     text-align: center;
     box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+}
+
+.home-link {
+    color: #fff;
+    text-decoration: none;
 }
 
 h1 {
@@ -115,3 +124,121 @@ main {
     top: 5%;
     right: 5%;
  }
+
+ .tm {
+    font-size: 0.5em;
+    position: relative;
+    top: -0.7em;
+    right: -0.1em;
+    vertical-align: baseline;
+    font-weight: normal;
+    line-height: 0;
+}
+
+/* Form Styles */
+.main-form {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(44, 62, 80, 0.12);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #1b4862;
+  font-size: 1rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #dce7f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #f9fcff;
+}
+
+.form-group input:focus {
+  border-color: #2986cc;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(41, 134, 204, 0.15);
+  background: #ffffff;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 0.5rem;
+  accent-color: #2986cc;
+}
+
+.radio-group label {
+  display: inline;
+  font-weight: 400;
+}
+
+button[type="submit"] {
+  padding: 0.75rem 1.75rem;
+  background: linear-gradient(90deg, #2986cc 0%, #0c7cd5 100%);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, #2569a7 0%, #105e8b 100%);
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.16);
+  transform: translateY(-2px);
+}
+
+/* Error message styling */
+.main-form ul {
+  background: #fff5f5;
+  border-left: 4px solid #e74c3c;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  list-style-type: none;
+}
+
+.main-form ul li {
+  color: #c0392b;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.main-form ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-form {
+    padding: 1.5rem;
+  }
+}

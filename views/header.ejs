@@ -1,5 +1,5 @@
 <header>
-    <h1>Members Only Message Board</h1>
+    <h1><a class="home-link" href="/"><i>Members Only<span class="tm">™</span></i> Message Board</a></h1>
     <% if(locals.user) { %>
         <div class="logBtn">
             <p>Welcome, <%= user.fname %> <%= user.lname %></p>
@@ -8,6 +8,7 @@
     <% } else { %>
         <div class="logBtn">
             <a class="buttons" href="/login">Login</a>
+            <a class="buttons" href="/register">Sign Up</a>
         </div>
     <% } %>
 </header>
