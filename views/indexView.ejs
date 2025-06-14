@@ -15,34 +15,21 @@
             <div class="messages">
                 <% messages.map((msg) => { %>
                     <div class="message">
-                        <div><strong>Name:</strong> <%= msg.fname %>  <%= msg.lname %></div>
-                        <div><strong>Email:</strong> <%= msg.email %></div>
-                        <div><strong>Status:</strong> <%= msg.status %></div>
+                        <% if (locals.user && (user.email === msg.email || user.admin === "1")) { %>
+                            <a class="buttons msg-btn" href="/edit?msgId=<%= msg.id %>">Edit</a>
+                            <a class="buttons msg-btn" href="/edit/delete?msgId=<%= msg.id %>">Delete</a>
+                        <% } %>
+                        <% if (locals.user && user.status === 'member') {%>
+                            <div><strong>Name:</strong> <%= msg.fname %>  <%= msg.lname %></div>
+                            <div><strong>Email:</strong> <%= msg.email %></div>
+                        <% } else { %>
+                            <div><strong></strong></div>
+                            <% } %>
+                         <div><strong><%= msg.status %></strong></div>
                         <div><strong><%= msg.date %></strong></div>
                         <p><%= msg.message %></p>
                     </div>
                 <% }) %>
-                <div class="message">
-                    <div><strong>First Name:</strong> Alice</div>
-                    <div><strong>Last Name:</strong> Johnson</div>
-                    <div><strong>Email:</strong> alice.johnson@email.com</div>
-                    <div><strong>Status:</strong> Member</div>
-                    <p>Hello everyone! Excited to be a part of Members Only.</p>
-                </div>
-                <div class="message">
-                    <div><strong>First Name:</strong> Bob</div>
-                    <div><strong>Last Name:</strong> Lee</div>
-                    <div><strong>Email:</strong> boblee123</div>
-                    <div><strong>Status:</strong> Guest</div>
-                    <p>Glad to find this board. Looking forward to connecting!</p>
-                </div>
-                <div class="message">
-                    <div><strong>First Name:</strong> Priya</div>
-                    <div><strong>Last Name:</strong> Patel</div>
-                    <div><strong>Email:</strong> priya.patel@email.com</div>
-                    <div><strong>Status:</strong> Member</div>
-                    <p>Welcome new members! Don’t hesitate to introduce yourself.</p>
-                </div>
             </div>
         </section>
     </main>

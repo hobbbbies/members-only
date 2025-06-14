@@ -3,7 +3,7 @@ const router = express.Router();
 const queries = require('../db/queries');
 
 router.get("/", async (req, res) => {
-    messages = await queries.getMessages();
+    messages = await queries.getAllMessages();
     res.render('indexView', { messages: messages, user: req.user });
 });
 

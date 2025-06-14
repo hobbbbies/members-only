@@ -236,6 +236,14 @@ button[type="submit"]:hover {
   margin-bottom: 0;
 }
 
+.msg-btn {
+    padding: 0.4rem 0.8rem;  /* Smaller padding */
+    font-size: 0.85rem;      /* Smaller font */
+    margin: 0.25rem 0.5rem 0.25rem 0;  /* Reduced margins */
+    background: linear-gradient(90deg, #757575 0%, #555555 100%);  /* Grey gradient */
+    display: inline-block;  
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .main-form {

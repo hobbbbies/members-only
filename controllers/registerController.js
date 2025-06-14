@@ -43,11 +43,12 @@ const usersCreatePost = [
     if (!errors.isEmpty()) {
       return res.status(400).render("registerView", {
         title: "Register",
+        user: req.user,
         errors: errors.array(),
       });
     }
     const hash = await helpers.genPassword(req.body.password);
-    await queries.createUser(req.body.fname, req.body.lname, req.body.email, hash, req.body.membershipStatus);
+    await queries.createUser(req.body.fname, req.body.lname, req.body.email, hash, req.body.admin);
     const user = await queries.findUserByEmail(req.body.email);
 
     req.login(user, function(err) {

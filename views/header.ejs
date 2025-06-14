@@ -5,10 +5,17 @@
             <p>Welcome, <%= user.fname %> <%= user.lname %></p>
             <a class="buttons" href="/logout">Logout</a>
         </div>
+        <div class="memberDiv">
+        <% if (user.status !== 'member') { %>
+            <p>Become a member to post and see names of other posters!</p>
+            <p>Not a member yet? <a href="/member">Sign Up</a></p>            
+        <% } %>
+        </div>
     <% } else { %>
         <div class="logBtn">
             <a class="buttons" href="/login">Login</a>
             <a class="buttons" href="/register">Sign Up</a>
         </div>
     <% } %>
+
 </header>

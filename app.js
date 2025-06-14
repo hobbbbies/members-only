@@ -5,6 +5,8 @@ const indexRouter = require("./routes/indexRouter");
 const registerRouter = require("./routes/registerRouter");
 const loginRouter = require("./routes/loginRouter");
 const createRouter = require("./routes/createRouter");
+const editRouter = require("./routes/editRouter");
+const memberRouter = require("./routes/memberRouter");
 const session = require('express-session');
 const passport = require('passport');
 const pool = require('./db/pool');
@@ -34,7 +36,10 @@ app.use("/", indexRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/create", createRouter);
+app.use("/edit", editRouter);
+app.use("/member", memberRouter);
 
 app.listen(PORT, () => {
     console.log("Listening on ", PORT);
 });
+

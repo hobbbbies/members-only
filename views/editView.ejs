@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit page</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <%- include("./header", {user: user}) %>
+    <main>
+        <div class="main-form">
+          <% if (locals.errors) {%>
+          <ul>
+            <% errors.forEach(function(error) { %>
+            <li><%= error.msg %></li>
+            <% }); %>
+          </ul>
+          <% } %>
+          <form method="POST" action="/edit?msgId=<%= msg.id%>">
+            <div class="form-group">
+              <label for="msg">Message:</label>
+              <textarea type="text" id="msg" name="msg" required><%= msg.message %></textarea>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+          </body>
+    </main>
+</html>
