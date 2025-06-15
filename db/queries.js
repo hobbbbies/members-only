@@ -26,7 +26,7 @@ const pool = require('./pool');
 
  // Used for rendering messages
  async function getAllMessages() {
-    const { rows } = await pool.query('SELECT * FROM messages JOIN members ON messages.email = members.email');
+    const { rows } = await pool.query('SELECT * FROM messages JOIN members ON messages.email = members.email ORDER BY messages.date DESC');
     return rows;
  }
  
